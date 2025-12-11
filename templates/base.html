@@ -43,10 +43,7 @@
           <a href="{{ url_for('products') }}" class="text-sm hover:text-emerald-700">Products</a>
 
           {% if session.get('user_id') %}
-    <a href="{{ url_for('profile') }}" class="text-sm hover:text-emerald-700">
-        My Orders
-    </a>
-{% endif %}
+            <a href="{{ url_for('profile') }}" class="text-sm hover:text-emerald-700">My Orders</a>
             <a href="{{ url_for('order') }}" class="text-sm hover:text-emerald-700">Order</a>
             <a href="{{ url_for('logout') }}" class="text-sm text-red-600 hover:text-red-700">Logout</a>
           {% else %}
