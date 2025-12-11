@@ -1,0 +1,62 @@
+/* =========================
+   GLOBAL
+========================= */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* =========================
+   BANNER CAROUSEL (MOBILE-FIRST)
+========================= */
+
+/* Default: MOBILE */
+.banner-carousel {
+  height: 220px;              /* good for phones */
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Tablets */
+@media (min-width: 640px) {
+  .banner-carousel {
+    height: 300px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .banner-carousel {
+    height: 420px;
+  }
+}
+
+.banner-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   POLICY PAGES
+========================= */
+
+.policy-page h1 {
+  color: #047857; /* emerald-700 */
+}
+
+.policy-page h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #065f46; /* emerald-800 */
+}
+
+.policy-page p {
+  line-height: 1.7;
+  color: #475569; /* slate-600 */
+}
+
+.policy-page ul li {
+  margin-top: 0.35rem;
+  color: #475569; /* slate-600 */
+}

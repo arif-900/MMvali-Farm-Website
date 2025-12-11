@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}My Account · MMVALI Farm{% endblock %}
+{% block content %}
+<section class="max-w-6xl mx-auto px-4 py-10">
+  <h1 class="text-2xl font-semibold text-emerald-700 mb-4">My Account</h1>
+
+  <div class="grid gap-6 md:grid-cols-3">
+    <!-- Left: user info -->
+    <div class="md:col-span-1 bg-white rounded-xl shadow p-6">
+      <h2 class="font-semibold mb-2">Account</h2>
+      <div class="text-sm text-slate-700">Name: {{ user.name or "—" }}</div>
+      <div class="text-sm text-slate-700">Email: {{ user.email }}</div>
+      <div class="mt-4">
+        <a href="{{ url_for('logout') }}" class="text-xs underline">Logout</a>
+      </div>
+    </div>
+
+    <!-- Right: orders -->
+    <div class="md:col-span-2 bg-white rounded-xl shadow p-6">
+      <h2 class="font-semibold mb-3">My Orders</h2>
+
+      {% if orders %}
+        <ul class="space-y-3">
+          {% for o in orders %}
+            <li class="p-3 border rounded">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="text-sm text-slate-700 font-medium">Order #{{ o.id }} · {{ o.product }}</div>
+                  <div class="text-xs text-slate-500">Placed: {{ o.created_at.strftime("%d-%m-%Y %H:%M") }}</div>
+                  <div class="text-sm text-slate-600 mt-2">{{ o.address }}</div>
+                  <div class="text-xs text-slate-500 mt-1">Payment: {{ o.payment_method }} ({{ o.payment_status }})</div>
+                </div>
+
+                <div class="text-right w-40">
+                  <div class="font-semibold">₹{{ o.total_price or 0 }}</div>
+                  <div class="text-xs my-1">
+                    <span class="inline-block px-2 py-1 rounded text-xs
+                      {% if o.status == 'Pending' %}bg-yellow-100 text-yellow-800
+                      {% elif o.status == 'Processing' %}bg-blue-100 text-blue-800
+                      {% elif o.status == 'Paid' %}bg-indigo-100 text-indigo-800
+                      {% elif o.status == 'Delivered' %}bg-emerald-100 text-emerald-800
+                      {% elif o.status == 'Cancelled' %}bg-red-100 text-red-800
+                      {% else %}bg-slate-100 text-slate-800{% endif %}">
+                      {{ o.status }}
+                    </span>
+                  </div>
+                  <div class="mt-2">
+                    <a href="{{ url_for('order_success', order_id=o.id) }}" class="text-xs underline">View</a>
+                    <a href="https://wa.me/{{ o.phone|replace('+','') }}" target="_blank" class="text-xs ml-2 underline">WhatsApp</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-sm text-slate-600">No orders yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

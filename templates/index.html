@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% block title %}Home · MMVALI Farm{% endblock %}
+{% block content %}
+
+<!-- ========= BANNER CAROUSEL (INSIDE CONTAINER) ========= -->
+<section class="max-w-6xl mx-auto px-4 pt-4">
+  <div id="bannerCarousel"
+       class="carousel slide banner-carousel shadow-lg border border-emerald-100"
+       data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='images/banner1.jpg') }}"
+             class="d-block w-100"
+             alt="Banner 1">
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='images/banner2.jpg') }}"
+             class="d-block w-100"
+             alt="Banner 2">
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='images/banner3.jpg') }}"
+             class="d-block w-100"
+             alt="Banner 3">
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='images/banner4.jpg') }}"
+             class="d-block w-100"
+             alt="Banner 3">
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#bannerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#bannerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0"
+              class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="3"
+              aria-label="Slide 4"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT US ================= -->
+<section class="max-w-6xl mx-auto px-4 py-10">
+  <div class="grid md:grid-cols-2 gap-8 items-center">
+
+    <div>
+      <h2 class="text-2xl font-semibold text-emerald-700 mb-3">
+        About MMVALI Farm
+      </h2>
+
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        At MMVALI Farm, we believe good health begins with pure food.
+        Every product we offer — from fresh milk and curd to paneer, kova
+        and ghee — is carefully prepared using pure cow’s milk from our own farm.
+      </p>
+
+      <p class="text-slate-600 mb-4 leading-relaxed">
+        We follow hygienic processing, responsible farming practices, and
+        eco-friendly methods to maintain the natural goodness of milk.
+        As a family-run dairy, we are committed to quality, transparency,
+        and long-term customer trust.
+      </p>
+
+      <p class="text-slate-700 font-semibold">
+        Pure from our farm. Honest in every drop.
+      </p>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden shadow">
+      <img src="{{ url_for('static', filename='images/p2.jpg') }}"
+           alt="About MMVALI Farm"
+           class="w-full h-64 sm:h-72 md:h-80 object-cover">
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="bg-emerald-50 py-12">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <h2 class="text-2xl font-semibold text-emerald-700 text-center mb-8">
+      Why Choose Us?
+    </h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-semibold text-emerald-700 mb-2">100% Pure Buffelo's Milk</h3>
+        <p class="text-sm text-slate-600">
+          Milk sourced directly from our own farm without mixing or dilution.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-semibold text-emerald-700 mb-2">Farm-Fresh Daily</h3>
+        <p class="text-sm text-slate-600">
+          Dairy products are prepared fresh every day to preserve taste and quality.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-semibold text-emerald-700 mb-2">Hygienic Processing</h3>
+        <p class="text-sm text-slate-600">
+          Clean handling and safe processing from milking to packing.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-semibold text-emerald-700 mb-2">Ethical Farming</h3>
+        <p class="text-sm text-slate-600">
+          Healthy cows, ethical care, and environment-conscious farming methods.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-semibold text-emerald-700 mb-2">Family-Run Dairy</h3>
+        <p class="text-sm text-slate-600">
+          A trusted local farm focused on honesty and long-term relationships.
+        </p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-semibold text-emerald-700 mb-2">Natural Taste</h3>
+        <p class="text-sm text-slate-600">
+          No preservatives—just real flavour and nutrition in every product.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUR PRODUCTS ================= -->
+<section class="max-w-6xl mx-auto px-4 py-12">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-2xl font-semibold text-emerald-700">Our Products</h2>
+    <a href="{{ url_for('products') }}" class="text-sm text-emerald-700 hover:underline">
+      View all
+    </a>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for p in products %}
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+
+        <!-- Image -->
+        <div class="h-60 bg-slate-100">
+          <img src="{{ url_for('static', filename='images/' ~ p.image) }}"
+               alt="{{ p.name }}"
+               class="w-full h-full object-cover">
+        </div>
+
+        <!-- Content + ORDER BUTTON -->
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="font-semibold text-slate-800">
+            {{ p.name }}
+          </h3>
+
+          <div class="text-emerald-600 font-bold mt-1">
+            ₹{{ p.price }}
+          </div>
+
+          <p class="text-sm text-slate-600 mt-1">
+            {{ p.description }}
+          </p>
+
+          <!-- ORDER BUTTON -->
+          <a href="{{ url_for('order') }}?product={{ p.name }}"
+            class="mt-auto inline-flex justify-center w-36 px-4 py-2 rounded-lg
+                    bg-emerald-600 text-white text-sm font-medium 
+                    hover:bg-emerald-700 transition">
+            Order Now
+          </a>
+
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ================= FAQ SECTION ================= -->
+<!-- ================= FAQ SECTION ================= -->
+<section class="max-w-6xl mx-auto px-4 py-12">
+  <h2 class="text-2xl font-semibold text-emerald-700 text-center mb-8">
+    Frequently Asked Questions
+  </h2>
+
+  <div class="space-y-4">
+
+    <!-- FAQ ITEM -->
+    <details class="group bg-white rounded-xl shadow border-l-4 border-emerald-600 p-5">
+      <summary class="flex items-center justify-between cursor-pointer list-none">
+        <span class="font-semibold text-slate-800">
+          Where does your milk come from?
+        </span>
+        <span class="text-emerald-600 transform transition group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
+      <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+        Our milk comes directly from cows raised on our own MMVALI Dairy Farm without third-party sourcing.
+      </p>
+    </details>
+
+    <details class="group bg-white rounded-xl shadow border-l-4 border-emerald-600 p-5">
+      <summary class="flex items-center justify-between cursor-pointer list-none">
+        <span class="font-semibold text-slate-800">
+          Are your dairy products fresh every day?
+        </span>
+        <span class="text-emerald-600 transform transition group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
+      <p class="mt-3 text-sm text-slate-600">
+        Yes, all our products including milk, curd, paneer, and kova are prepared fresh daily.
+      </p>
+    </details>
+
+    <details class="group bg-white rounded-xl shadow border-l-4 border-emerald-600 p-5">
+      <summary class="flex items-center justify-between cursor-pointer list-none">
+        <span class="font-semibold text-slate-800">
+          Do you use preservatives or chemicals?
+        </span>
+        <span class="text-emerald-600 transform transition group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
+      <p class="mt-3 text-sm text-slate-600">
+        No. We do not use preservatives, artificial colors, or harmful chemicals in any of our products.
+      </p>
+    </details>
+
+    <details class="group bg-white rounded-xl shadow border-l-4 border-emerald-600 p-5">
+      <summary class="flex items-center justify-between cursor-pointer list-none">
+        <span class="font-semibold text-slate-800">
+          Is your ghee made from pure cow’s milk?
+        </span>
+        <span class="text-emerald-600 transform transition group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
+      <p class="mt-3 text-sm text-slate-600">
+        Yes, our ghee is traditionally prepared from pure cow’s milk to retain natural aroma and nutrition.
+      </p>
+    </details>
+
+    <details class="group bg-white rounded-xl shadow border-l-4 border-emerald-600 p-5">
+      <summary class="flex items-center justify-between cursor-pointer list-none">
+        <span class="font-semibold text-slate-800">
+          How do you ensure hygiene and safety?
+        </span>
+        <span class="text-emerald-600 transform transition group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
+      <p class="mt-3 text-sm text-slate-600">
+        We follow strict hygiene practices during milking, processing, and packaging.
+      </p>
+    </details>
+
+    <details class="group bg-white rounded-xl shadow border-l-4 border-emerald-600 p-5">
+      <summary class="flex items-center justify-between cursor-pointer list-none">
+        <span class="font-semibold text-slate-800">
+          Do you provide home delivery?
+        </span>
+        <span class="text-emerald-600 transform transition group-open:rotate-180">
+          ▼
+        </span>
+      </summary>
+      <p class="mt-3 text-sm text-slate-600">
+        Yes, we provide local home delivery. Please contact us for availability.
+      </p>
+    </details>
+
+  </div>
+</section>
+<!-- ============================================== -->
+
+
+{% endblock %}

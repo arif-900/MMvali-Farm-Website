@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Edit Product · Admin{% endblock %}
+{% block content %}
+<section class="max-w-3xl mx-auto px-4 py-10">
+  <a href="{{ url_for('admin_products') }}" class="underline text-sm">← Back to products</a>
+  <div class="bg-white rounded shadow p-6 mt-4">
+    <h2 class="font-semibold mb-3">Edit product #{{ product.id }}</h2>
+    <form method="post" class="space-y-3">
+      <div><label class="text-xs">Name</label><input name="name" required class="w-full p-2 border rounded" value="{{ product.name }}" /></div>
+      <div><label class="text-xs">Price</label><input name="price" type="number" required class="w-full p-2 border rounded" value="{{ product.price }}" /></div>
+      <div><label class="text-xs">Image filename</label><input name="image" class="w-full p-2 border rounded" value="{{ product.image }}" /></div>
+      <div><label class="text-xs">Description</label><textarea name="description" class="w-full p-2 border rounded">{{ product.description }}</textarea></div>
+      <div><button class="px-3 py-2 bg-emerald-600 text-white rounded">Save changes</button></div>
+    </form>
+  </div>
+</section>
+{% endblock %}

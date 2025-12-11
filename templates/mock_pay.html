@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Mock Payment · MMVALI Farm{% endblock %}
+{% block content %}
+<section class="max-w-md mx-auto px-4 py-10">
+  <div class="bg-white rounded-xl shadow p-6">
+    <h1 class="text-xl font-semibold mb-3">Pay for Order #{{ order.id }}</h1>
+    <p class="text-sm text-slate-600 mb-4">Amount: <strong>₹{{ order.total_price or 0 }}</strong></p>
+
+    <form method="post" class="space-y-3">
+      <button name="action" value="success" class="w-full px-4 py-2 bg-emerald-600 text-white rounded">Simulate Payment Success</button>
+      <button name="action" value="fail" class="w-full px-4 py-2 border rounded">Simulate Payment Failure</button>
+    </form>
+
+    <p class="text-xs text-slate-500 mt-4">Note: This is a mock payment. Replace with real gateway integration (Razorpay / PayTM / Stripe) in production.</p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}MMVALI Farm{% endblock %}</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap (for carousel used in index) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+  <style>
+    /* small helper so flash messages don't overlap nav */
+    body { padding-top: 4.5rem; }
+  </style>
+
+  {% block head %}{% endblock %}
+</head>
+<body class="bg-emerald-50 text-slate-800">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur z-50 border-b">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <a href="{{ url_for('index') }}" class="flex items-center gap-3">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="logo"
+                 class="h-10 w-10 rounded-full object-cover border-2 border-emerald-200 bg-white p-1">
+            <div>
+              <div class="font-semibold text-emerald-700">MMVALI Farm</div>
+              <div class="text-xs text-slate-500">Fresh • Pure • Trusted</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- desktop links -->
+        <div class="hidden md:flex items-center gap-4">
+          <a href="{{ url_for('index') }}" class="text-sm hover:text-emerald-700">Home</a>
+          <a href="{{ url_for('about') }}" class="text-sm hover:text-emerald-700">About</a>
+          <a href="{{ url_for('products') }}" class="text-sm hover:text-emerald-700">Products</a>
+
+          {% if session.user_id %}
+            <a href="{{ url_for('profile') }}" class="text-sm hover:text-emerald-700">Profile</a>
+            <a href="{{ url_for('order') }}" class="text-sm hover:text-emerald-700">Order</a>
+            <a href="{{ url_for('logout') }}" class="text-sm text-red-600 hover:text-red-700">Logout</a>
+          {% else %}
+            <a href="{{ url_for('login') }}" class="text-sm hover:text-emerald-700">Login</a>
+            <a href="{{ url_for('register') }}" class="text-sm px-3 py-1 rounded bg-emerald-600 text-white hover:bg-emerald-700">Register</a>
+          {% endif %}
+        </div>
+
+        <!-- mobile hamburger -->
+        <div class="md:hidden">
+          <button id="mobileMenuBtn" class="p-2 rounded hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- mobile menu (hidden by default) -->
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
+      <div class="px-4 py-3 space-y-2">
+        <a href="{{ url_for('index') }}" class="block text-sm">Home</a>
+        <a href="{{ url_for('about') }}" class="block text-sm">About</a>
+        <a href="{{ url_for('products') }}" class="block text-sm">Products</a>
+
+        {% if session.user_id %}
+          <a href="{{ url_for('profile') }}" class="block text-sm">Profile</a>
+          <a href="{{ url_for('order') }}" class="block text-sm">Order</a>
+          <a href="{{ url_for('logout') }}" class="block text-sm text-red-600">Logout</a>
+        {% else %}
+          <a href="{{ url_for('login') }}" class="block text-sm">Login</a>
+          <a href="{{ url_for('register') }}" class="block text-sm">Register</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- FLASH MESSAGES -->
+  <div class="fixed top-16 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-2xl px-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="space-y-2">
+          {% for category, msg in messages %}
+            <div class="rounded-lg p-3 text-sm shadow"
+                 {% if category == 'success' %} style="background:#ecfdf5;color:#065f46;" {% elif category=='error' %} style="background:#fee2e2;color:#9b1c1c;" {% else %} style="background:#f8fafc;color:#0f172a;" {% endif %}>
+              {{ msg }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FOOTER (keep simple here, replace with your custom footer) -->
+  <footer class="mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 text-center">
+      © 2025 MMVALI Farm · <a href="{{ url_for('terms') }}" class="underline">Terms</a> · <a href="{{ url_for('privacy') }}" class="underline">Privacy</a>
+    </div>
+  </footer>
+
+  <!-- small script to toggle mobile menu -->
+  <script>
+    const btn = document.getElementById('mobileMenuBtn')
+    const menu = document.getElementById('mobileMenu')
+    if (btn) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden')
+      })
+    }
+  </script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

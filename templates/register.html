@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Register · MMVALI Farm{% endblock %}
+{% block content %}
+<section class="max-w-md mx-auto px-4 py-10">
+  <h1 class="text-2xl font-semibold text-emerald-700 mb-4">Create account</h1>
+  <form method="post" class="bg-white rounded-xl shadow p-6 space-y-4">
+    <div>
+      <label class="block text-sm mb-1">Name (optional)</label>
+      <input name="name" class="w-full p-2 border rounded" placeholder="Your name (optional)">
+    </div>
+
+    <div>
+      <label class="block text-sm mb-1">Email</label>
+      <input name="email" type="email" required class="w-full p-2 border rounded" placeholder="Enter a valid email (not duplicated)">
+    </div>
+
+    <div>
+      <label class="block text-sm mb-1">Password</label>
+      <input name="password" type="password" required class="w-full p-2 border rounded" placeholder="Create a password">
+    </div>
+
+    <button class="w-full px-4 py-2 bg-emerald-600 text-white rounded">Register & Login</button>
+
+    <p class="text-xs text-slate-600">
+      Already have an account? <a href="{{ url_for('login') }}" class="underline">Login</a>
+    </p>
+  </form>
+</section>
+{% endblock %}

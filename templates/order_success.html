@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Order Confirmed · MMVALI Farm{% endblock %}
+
+{% block content %}
+<section class="max-w-md mx-auto px-4 py-10">
+  <div class="bg-white rounded-xl shadow p-6">
+    <h1 class="text-2xl font-semibold text-emerald-700 mb-3">Order Confirmed</h1>
+    <p class="text-slate-600 mb-3">Thanks, <strong>{{ order.customer_name }}</strong>. Your order #{{ order.id }} is recorded.</p>
+
+    <div class="mb-3">
+      <div><strong>Product:</strong> {{ order.product }}</div>
+      <div><strong>Quantity:</strong> {{ order.quantity }}</div>
+      <div><strong>Total:</strong> ₹{{ order.total_price or 0 }}</div>
+      <div><strong>Status:</strong> {{ order.status }}</div>
+    </div>
+
+    <div class="bg-emerald-50 p-3 rounded mb-3">
+      <h4 class="font-semibold">Payment instructions</h4>
+      <pre class="text-xs">{{ payment_info.bank_account }}\nUPI: {{ payment_info.upi }}</pre>
+      <p class="text-xs mt-2">After payment, message admin with your Order ID to confirm.</p>
+    </div>
+
+    <div class="flex gap-3">
+      <a href="{{ url_for('track') }}" class="px-4 py-2 rounded border">Track Order</a>
+      <a href="{{ url_for('index') }}" class="px-4 py-2 rounded border">Back to Home</a>
+      <a href="{{ url_for('admin_order_whatsapp_user', order_id=order.id) }}" target="_blank" class="px-3 py-2 bg-green-500 text-white rounded">Share on WhatsApp</a>
+    </div>
+
+    <p class="text-xs text-slate-500 mt-4">We have sent a tracking email if you provided one. Check spam if you don't see it.</p>
+  </div>
+</section>
+{% endblock %}

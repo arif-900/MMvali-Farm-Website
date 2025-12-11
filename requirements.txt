@@ -1,0 +1,7 @@
+Flask==2.3.3
+Flask-SQLAlchemy==3.1.1
+python-dotenv==1.0.0
+
+app.config["EMAIL_USER"] = "your_email@gmail.com"
+app.config["EMAIL_PASSWORD"] = "your_app_password"
+app.config["OWNER_EMAIL"] = "admin_notify@example.com"

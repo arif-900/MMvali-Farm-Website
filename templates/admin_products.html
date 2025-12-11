@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Admin · Products{% endblock %}
+{% block content %}
+<section class="max-w-6xl mx-auto px-4 py-10">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-semibold text-emerald-700">Manage Products</h1>
+    <a href="{{ url_for('admin') }}" class="text-sm underline">← Dashboard</a>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="md:col-span-2 bg-white rounded shadow p-4">
+      <h2 class="font-semibold mb-3">Products list</h2>
+      <table class="min-w-full text-sm">
+        <thead class="text-left text-slate-500">
+          <tr><th class="px-2 py-1">ID</th><th class="px-2 py-1">Name</th><th class="px-2 py-1">Price</th><th class="px-2 py-1">Actions</th></tr>
+        </thead>
+        <tbody>
+          {% for p in products %}
+            <tr class="border-t">
+              <td class="px-2 py-2">{{ p.id }}</td>
+              <td class="px-2 py-2">{{ p.name }}</td>
+              <td class="px-2 py-2">₹{{ p.price }}</td>
+              <td class="px-2 py-2">
+                <a href="{{ url_for('admin_products_edit', pid=p.id) }}" class="text-xs underline mr-2">Edit</a>
+                <form method="post" action="{{ url_for('admin_products_delete', pid=p.id) }}" class="inline" onsubmit="return confirm('Delete product?');">
+                  <button class="text-xs text-red-600">Delete</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-white rounded shadow p-4">
+      <h2 class="font-semibold mb-3">Add product</h2>
+      <form method="post" action="{{ url_for('admin_products_add') }}" class="space-y-3">
+        <div><label class="text-xs">Name</label><input name="name" required class="w-full p-2 border rounded" /></div>
+        <div><label class="text-xs">Price (₹)</label><input name="price" type="number" required class="w-full p-2 border rounded" /></div>
+        <div><label class="text-xs">Image filename</label><input name="image" class="w-full p-2 border rounded" placeholder="p4.jpg" /></div>
+        <div><label class="text-xs">Description</label><textarea name="description" class="w-full p-2 border rounded"></textarea></div>
+        <div><button class="px-3 py-2 bg-emerald-600 text-white rounded">Add product</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

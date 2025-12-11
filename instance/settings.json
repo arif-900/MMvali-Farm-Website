@@ -1,0 +1,9 @@
+{
+  "owner_whatsapp": "+919876543210",
+  "owner_email": "",
+  "payment_instructions": {
+    "bank_account": "Bank: Airtel Payments Bank\nA/C: 9573859702\nIFSC: AIRtel\nName: ARIF MOLLA",
+    "upi": "ariffmolla@ybl",
+    "note": "After payment, WhatsApp / email admin with your Order ID to confirm."
+  }
+}
